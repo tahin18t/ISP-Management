@@ -64,7 +64,6 @@ public class Database {
             }
         } catch (SQLException ex) {
         }
-        
         return false;
     }
 }
