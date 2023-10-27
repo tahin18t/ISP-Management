@@ -29,6 +29,7 @@ public class Regestration extends javax.swing.JFrame {
     textComponent.setForeground(Color.GRAY);
 
     textComponent.addFocusListener(new java.awt.event.FocusAdapter() {
+        @Override
         public void focusGained(java.awt.event.FocusEvent evt) {
             if (textComponent.getText().equals(hint)) {
                 textComponent.setText("");
@@ -36,6 +37,7 @@ public class Regestration extends javax.swing.JFrame {
                 textComponent.setForeground(Color.BLACK);
             }
         }
+        @Override
         public void focusLost(java.awt.event.FocusEvent evt) {
             if (textComponent.getText().isEmpty()) {
                 textComponent.setText(hint);
@@ -67,9 +69,11 @@ public class Regestration extends javax.swing.JFrame {
         EmailSuggest = new javax.swing.JLabel();
         UNameSuggest = new javax.swing.JLabel();
         PhoneNum = new javax.swing.JFormattedTextField();
+        Signin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(168, 185, 255));
+        setUndecorated(true);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Phone Number");
@@ -151,14 +155,21 @@ public class Regestration extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        Signin.setBackground(new java.awt.Color(0, 0, 153));
+        Signin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Signin.setForeground(new java.awt.Color(255, 255, 255));
+        Signin.setText("Signin");
+        Signin.setBorder(null);
+        Signin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SigninActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(152, 152, 152)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(75, 75, 75)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,21 +185,29 @@ public class Regestration extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(PhoneNum, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(Suggest, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(Email, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Password, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(Suggest, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Email, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Password, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(56, 56, 56)
-                                .addComponent(submit, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(EmailSuggest, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(UNameSuggest, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(UNameSuggest, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Signin, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(125, 125, 125)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(152, 152, 152)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(147, 147, 147)
+                        .addComponent(submit, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,7 +244,9 @@ public class Regestration extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17)
                 .addComponent(submit, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(Signin)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -243,53 +264,57 @@ public class Regestration extends javax.swing.JFrame {
         if(!isValidEmail(Email.getText())){
             EmailSuggest.setText("Please Insert a Valid Email");
             EmailSuggest.setForeground(Color.RED);
-            
+            return;
+        }
+        String pass = new String(Password.getPassword());
+        if (pass == null) {
+            Suggest.setText("Minimum 8 characters (Include at least one uppercase, one lowercase, one digit, and one special character)");
+            return;
+        } else {
+            if(!checkPasswordStrength(pass))
+                return;
         }
         Database db = new Database();
-        boolean Result = db.registration(FullName.getText(), NickName.getText(), PhoneNum.getText(), Email.getText(), Password.getText(), Address.getText());
+        boolean Result = db.registration(FullName.getText(), NickName.getText(), PhoneNum.getText(), Email.getText(), Password.getText() , Address.getText());
         if (Result) {
-            dispose();
+            dispose(); 
             JOptionPane.showMessageDialog(null, "Account Created Successfully...", "Success", 3);
         } else {
             JOptionPane.showMessageDialog(null, "Fill the information correctly...", "Error", 3);
         }
-
     }//GEN-LAST:event_submitActionPerformed
 
-    private void checkPasswordStrength(String password) {
+    private boolean checkPasswordStrength(String password) {
     if (password.length() < 8) {
         Suggest.setText("Password is too short (Minimum 8 characters)");
         Suggest.setForeground(Color.RED);
+        return false;
     } else {
-        boolean containsUppercase = false;
-        boolean containsLowercase = false;
+        boolean containsLetter = false;
         boolean containsDigit = false;
-        boolean containsSpecialChar = false;
 
         for (char c : password.toCharArray()) {
-            if (Character.isUpperCase(c)) {
-                containsUppercase = true;
-            } else if (Character.isLowerCase(c)) {
-                containsLowercase = true;
+            if (Character.isLetter(c)) {
+                containsLetter = true;
             } else if (Character.isDigit(c)) {
                 containsDigit = true;
-            } else {
-                containsSpecialChar = true;
             }
         }
 
-        if (containsUppercase && containsLowercase && containsDigit && containsSpecialChar) {
+        if (containsLetter && containsDigit) {
             Suggest.setText("Strong Password");
             Suggest.setForeground(Color.BLUE);
+            return true;
         } else {
-            Suggest.setText("Weak Password (Include at least one uppercase, one lowercase, one digit, and one special character)");
+            Suggest.setText("Weak Password (Include at least one letter and one digit)");
             Suggest.setForeground(Color.RED);
+            return false;
         }
     }
 }
     
     private void PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordActionPerformed
-        String pass = Password.getText();
+        String pass = new String(Password.getPassword());
         if (pass == null) {
             Suggest.setText("Minimum 8 characters (Include at least one uppercase, one lowercase, one digit, and one special character)");
         } else {
@@ -308,6 +333,10 @@ public class Regestration extends javax.swing.JFrame {
     private void FullNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_FullNameFocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_FullNameFocusLost
+
+    private void SigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SigninActionPerformed
+        dispose();
+    }//GEN-LAST:event_SigninActionPerformed
 
     private void EmailActionPerformed(java.awt.event.ActionEvent evt) {                                      
         if(!isValidEmail(Email.getText())){
@@ -328,6 +357,7 @@ public class Regestration extends javax.swing.JFrame {
     private javax.swing.JTextField NickName;
     private javax.swing.JPasswordField Password;
     private javax.swing.JFormattedTextField PhoneNum;
+    private javax.swing.JButton Signin;
     private javax.swing.JLabel Suggest;
     private javax.swing.JLabel UNameSuggest;
     private javax.swing.JLabel jLabel1;

@@ -102,10 +102,6 @@ public class Loading extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    public static void main(String[] args) {
-        
-//ProgressBarFrame PF = new ProgressbarFrame();
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Loading;
     public static javax.swing.JProgressBar Progress;

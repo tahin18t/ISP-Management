@@ -13,7 +13,7 @@ public class Admin_Panel extends javax.swing.JFrame {
     /**
      * Creates new form Admin_Panel
      */
-    public Admin_Panel() {
+    public Admin_Panel(Admin admin) {
         initComponents();
     }
 

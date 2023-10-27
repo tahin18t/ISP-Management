@@ -58,7 +58,6 @@ class Admin {
     }
 
     Admin() {
-        
     }
 }
 
@@ -72,7 +71,6 @@ class User {
     String Address;
 
     User() {
-
     }
 
     public User(String FullName, String NickName, String PhonNumber, String Email, String Password, String Address) {
