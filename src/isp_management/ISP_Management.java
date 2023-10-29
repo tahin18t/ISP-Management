@@ -63,12 +63,14 @@ class Admin {
 
 class User {
 
+    int id;
     String FullName;
     String NickName;
     String PhonNumber;
     String Email;
     private String Password;
     String Address;
+    char Package;
 
     User() {
     }
@@ -80,5 +82,9 @@ class User {
         this.Email = Email;
         this.Password = Password;
         this.Address = Address;
+    }
+    
+    private User(char P){
+        this.Package = P;
     }
 }
