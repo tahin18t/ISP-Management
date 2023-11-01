@@ -1,18 +1,16 @@
 package isp_management;
 
-import static isp_management.Loading.Progress;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 public class ISP_Management {
 
     public static void main(String[] args) {
+        //Admin admin = new Admin("Name", "Phone", "Email", "Password");
+        //new Admin_Panel(admin).setVisible(true);
+        //return;
+        System.out.println("hello world");
         Loading ld = new Loading();
         ld.setVisible(true);
         for (int i = 0; i <= 100; i++) {
@@ -70,11 +68,20 @@ class User {
     String Email;
     private String Password;
     String Address;
-    char Package;
+    String Package;
 
     User() {
     }
 
+    public User(String FullName, String NickName, String PhonNumber, String Email, String Password, String Address, String Package) {
+        this.FullName = FullName;
+        this.NickName = NickName;
+        this.PhonNumber = PhonNumber;
+        this.Email = Email;
+        this.Password = Password;
+        this.Address = Address;
+        this.Package = Package;
+    }
     public User(String FullName, String NickName, String PhonNumber, String Email, String Password, String Address) {
         this.FullName = FullName;
         this.NickName = NickName;
@@ -84,7 +91,7 @@ class User {
         this.Address = Address;
     }
     
-    private User(char P){
+    private User(String P){
         this.Package = P;
     }
 }

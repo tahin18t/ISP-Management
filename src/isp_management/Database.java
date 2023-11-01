@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Database {
 
@@ -105,6 +107,42 @@ public class Database {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    public User getUser(int index, String value) {
+        String sql = "";
+
+        sql = switch (index) {
+            //case 0 -> "SELECT * FROM user WHERE NickName = ?";
+            case 1 ->
+                "SELECT * FROM user WHERE Email = ?";
+            case 2 ->
+                "SELECT * FROM user WHERE Phone = ?";
+            default ->
+                "SELECT * FROM user WHERE NickName = ?";
+        };
+        try ( PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, value);
+            
+            ResultSet resultSet = statement.executeQuery();
+            
+            if(resultSet.next()){
+                return new User(
+                    resultSet.getString("Full_Name"),
+                    resultSet.getString("Nickname"),
+                    resultSet.getString("Phone"),
+                    resultSet.getString("Email"),
+                    null,
+                    resultSet.getString("Address"),
+                    resultSet.getString("Packages")
+                );
+            }
+        } catch (SQLException ex) {
+            return null;
+            //Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+
+    }
+
     public List<User> getAllUsers() {
         List<User> userList = new ArrayList<>();
 
@@ -138,6 +176,25 @@ public class Database {
             }
         } catch (SQLException e) {
             throw new RuntimeException("Error closing the database connection", e);
+        }
+    }
+
+    void updateUserPackage(String username, String newPackage) {
+        String sql = "UPDATE user SET Package = ? WHERE NickName = ?";
+
+        try ( PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, newPackage);
+            statement.setString(2, username);
+
+            int rowsAffected = statement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("Package updated successfully for user: " + username);
+            } else {
+                System.out.println("Package update failed for user: " + username);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error updating user package", e);
         }
     }
 }
