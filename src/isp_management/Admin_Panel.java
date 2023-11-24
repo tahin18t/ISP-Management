@@ -1,12 +1,16 @@
 package isp_management;
 
 import isp_management.Regestration;
+import isp_management.Database;
+import java.awt.Color;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -51,6 +55,16 @@ public class Admin_Panel extends javax.swing.JFrame {
         Package = new javax.swing.JComboBox<>();
         button1 = new java.awt.Button();
         error = new javax.swing.JDialog();
+        SetNewPassword = new javax.swing.JFrame();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        OldPass = new javax.swing.JPasswordField();
+        NewPass = new javax.swing.JPasswordField();
+        RePass = new javax.swing.JPasswordField();
+        PassSug = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
         Banner = new javax.swing.JPanel();
         Close = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -81,7 +95,7 @@ public class Admin_Panel extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         UserTable = new javax.swing.JTable();
         Value = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        GetUser = new javax.swing.JButton();
         type = new javax.swing.JComboBox<>();
         total = new javax.swing.JLabel();
         active = new javax.swing.JLabel();
@@ -226,6 +240,103 @@ public class Admin_Panel extends javax.swing.JFrame {
             .addGap(0, 398, Short.MAX_VALUE)
         );
 
+        SetNewPassword.setBounds(new java.awt.Rectangle(0, 0, 0, 0));
+        SetNewPassword.setSize(new java.awt.Dimension(600, 300));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel8.setText("Old Password");
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel10.setText("New Password");
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel11.setText("Re-type");
+
+        OldPass.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        OldPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OldPassActionPerformed(evt);
+            }
+        });
+
+        NewPass.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        RePass.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        RePass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RePassActionPerformed(evt);
+            }
+        });
+
+        PassSug.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        PassSug.setText("Password must be 8 character");
+
+        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton4.setText("Save");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(PassSug, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                            .addComponent(OldPass)
+                            .addComponent(NewPass)
+                            .addComponent(RePass)))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(148, 148, 148)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 116, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(OldPass, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(21, 21, 21)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(NewPass, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(21, 21, 21)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(RePass, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(PassSug)
+                .addGap(26, 26, 26)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout SetNewPasswordLayout = new javax.swing.GroupLayout(SetNewPassword.getContentPane());
+        SetNewPassword.getContentPane().setLayout(SetNewPasswordLayout);
+        SetNewPasswordLayout.setHorizontalGroup(
+            SetNewPasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SetNewPasswordLayout.createSequentialGroup()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        SetNewPasswordLayout.setVerticalGroup(
+            SetNewPasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(137, 157, 255));
         setUndecorated(true);
@@ -275,23 +386,33 @@ public class Admin_Panel extends javax.swing.JFrame {
 
         TUser.setEditable(false);
         TUser.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        TUser.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.MatteBorder(null), "Total User", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe Print", 0, 18))); // NOI18N
+        TUser.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "Total Area", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe Print", 0, 18))); // NOI18N
+        TUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TUserActionPerformed(evt);
+            }
+        });
 
         IUser.setEditable(false);
         IUser.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        IUser.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.MatteBorder(null), "Inactive User", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe Print", 0, 18))); // NOI18N
+        IUser.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "Inactive User", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe Print", 0, 18))); // NOI18N
 
         AUser.setEditable(false);
         AUser.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        AUser.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.MatteBorder(null), "Active User", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe Print", 0, 18))); // NOI18N
+        AUser.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "Active User", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe Print", 0, 18))); // NOI18N
+        AUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AUserActionPerformed(evt);
+            }
+        });
 
         TArea.setEditable(false);
         TArea.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        TArea.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.MatteBorder(null), "Total Area", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe Print", 0, 18))); // NOI18N
+        TArea.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "Total Area", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe Print", 0, 18))); // NOI18N
 
         TPackages.setEditable(false);
         TPackages.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        TPackages.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.MatteBorder(null), "Total Packages", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe Print", 0, 18))); // NOI18N
+        TPackages.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "Total Packages", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe Print", 0, 18))); // NOI18N
         TPackages.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TPackagesActionPerformed(evt);
@@ -309,16 +430,16 @@ public class Admin_Panel extends javax.swing.JFrame {
         jDesktopPane2Layout.setHorizontalGroup(
             jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                .addGap(106, 106, 106)
                 .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                        .addGap(118, 118, 118)
                         .addComponent(TUser, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(114, 114, 114)
+                        .addGap(102, 102, 102)
                         .addComponent(AUser, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(119, 119, 119)
                         .addComponent(IUser, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                        .addGap(125, 125, 125)
+                        .addGap(231, 231, 231)
                         .addComponent(TArea, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(66, 66, 66)
                         .addComponent(TPackages, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -440,6 +561,11 @@ public class Admin_Panel extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(149, 203, 255));
         jButton1.setText("Change Password");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         Logout.setBackground(new java.awt.Color(149, 203, 255));
         Logout.setText("Logout");
@@ -559,13 +685,13 @@ public class Admin_Panel extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(51, 51, 255));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Get User");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        GetUser.setBackground(new java.awt.Color(51, 51, 255));
+        GetUser.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        GetUser.setForeground(new java.awt.Color(255, 255, 255));
+        GetUser.setText("Get User");
+        GetUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                GetUserActionPerformed(evt);
             }
         });
 
@@ -596,7 +722,7 @@ public class Admin_Panel extends javax.swing.JFrame {
                         .addGap(36, 36, 36)
                         .addComponent(Value, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(GetUser, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(184, 184, 184)
                         .addComponent(active, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -618,7 +744,7 @@ public class Admin_Panel extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Value, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(GetUser, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -666,7 +792,7 @@ public class Admin_Panel extends javax.swing.JFrame {
     }//GEN-LAST:event_button1ActionPerformed
 
     private void CloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseActionPerformed
-        dispose();
+        System.exit(0);
     }//GEN-LAST:event_CloseActionPerformed
 
     private void JTableStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_JTableStateChanged
@@ -681,7 +807,7 @@ public class Admin_Panel extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_JTableStateChanged
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void GetUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GetUserActionPerformed
         Database db = new Database();
         user = db.getUser(type.getSelectedIndex(), Value.getText());
         if (user != null) {
@@ -691,10 +817,10 @@ public class Admin_Panel extends javax.swing.JFrame {
             phn.setText(user.PhonNumber);
             mail.setText(user.Email);
             Address.setText(user.Address);
-        } else{
-            error.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "here is no user as \""+Value.getText()+"\"", "Wrong Information", 3);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_GetUserActionPerformed
 
     private void ValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValueActionPerformed
 
@@ -702,38 +828,38 @@ public class Admin_Panel extends javax.swing.JFrame {
 
     private void UserTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UserTableMouseClicked
 
-        //        private final JTable userTable;
-        //        private final DefaultTableModel tableModel;
-        //        this.setTitle("Admin Panel");
-        //        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //        this.setSize(800, 600);
-        //
-        //        JPanel panel = new JPanel();
-        //        tableModel = new DefaultTableModel();
-        //        userTable = new JTable(tableModel);
-        //        JScrollPane scrollPane = new JScrollPane(userTable);
-        //        JButton updatePackageButton = new JButton("Update Package");
-        //        panel.add(scrollPane);
-        //        panel.add(updatePackageButton);
-        //        updatePackageButton.addActionListener(new ActionListener() {
-            //            @Override
-            //            public void actionPerformed(ActionEvent e) {
-                //                int selectedRow = userTable.getSelectedRow();
-                //                if (selectedRow != -1) {
-                    //                    String username = (String) tableModel.getValueAt(selectedRow, 0);
-                    //
-                    //                    // Retrieve the new package information (you should have a JComboBox or JTextField for this)
-                    //                    String newPackage = "Get the selected package from your input component";
-                    //
-                    //                    // Update the user's package in the database
-                    //                    Database db = new Database(); // Replace this with your database instance
-                    //                    db.updateUserPackage(username, newPackage); // Implement this method in your Database class
-                    //
-                    //                    // Update the table to reflect the new package
-                    //                    tableModel.setValueAt(newPackage, selectedRow, 4);
-                    //                }
-                //            }
-            //        }
+//                JTable userTable;
+//                DefaultTableModel tableModel;
+//                this.setTitle("Admin Panel");
+//                this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//                this.setSize(800, 600);
+//        
+//                JPanel panel = new JPanel();
+//                tableModel = new DefaultTableModel();
+//                userTable = new JTable(tableModel);
+//                JScrollPane scrollPane = new JScrollPane(userTable);
+//                JButton updatePackageButton = new JButton("Update Package");
+//                panel.add(scrollPane);
+//                panel.add(updatePackageButton);
+//                updatePackageButton.addActionListener(new ActionListener() {
+//                    @Override
+//                    public void actionPerformed(ActionEvent e) {
+//                        int selectedRow = userTable.getSelectedRow();
+//                        if (selectedRow != -1) {
+//                            String username = (String) tableModel.getValueAt(selectedRow, 0);
+//        
+//                            // Retrieve the new package information (you should have a JComboBox or JTextField for this)
+//                            String newPackage = "Get the selected package from your input component";
+//        
+//                            // Update the user's package in the database
+//                            Database db = new Database(); // Replace this with your database instance
+//                            db.updateUserPackage(username, newPackage); // Implement this method in your Database class
+//        
+//                            // Update the table to reflect the new package
+//                            tableModel.setValueAt(newPackage, selectedRow, 4);
+//                        }
+//                    }
+//                }
     }//GEN-LAST:event_UserTableMouseClicked
 
     private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
@@ -746,6 +872,54 @@ public class Admin_Panel extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TPackagesActionPerformed
 
+    private void TUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TUserActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        SetNewPassword.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void AUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AUserActionPerformed
+
+    private void OldPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OldPassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_OldPassActionPerformed
+
+    private void RePassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RePassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RePassActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
+        if (OldPass.getText().equals(admin.Password)) {
+            if (NewPass.getText().equals(RePass.getText())) {
+                if (NewPass.getText().equals(null)) {
+                    PassSug.setText("Minimum 8 characters (Include at least one latter and one digit)");
+                } else {
+                    if (!Regestration.checkPasswordStrength(NewPass.getText(), PassSug)) {
+                        return;
+                    }
+                }
+                Database db = new Database();
+                Admin newadmin = db.changePass(admin, NewPass.getText());
+                if (newadmin != null) {
+                    admin = newadmin;
+                    JOptionPane.showMessageDialog(null, "Password change successfully...", "Change password", INFORMATION_MESSAGE);
+                    SetNewPassword.dispose();
+                }
+            } else {
+                PassSug.setText("New Password Not Match");
+                PassSug.setForeground(Color.RED);
+            }
+        } else {
+            PassSug.setText("Old Password Not Match");
+            PassSug.setForeground(Color.RED);
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AUser;
@@ -755,14 +929,20 @@ public class Admin_Panel extends javax.swing.JFrame {
     private javax.swing.JButton Close;
     private javax.swing.JLabel Email;
     private javax.swing.JLabel FullName;
+    private javax.swing.JButton GetUser;
     private javax.swing.JTextField IUser;
     private javax.swing.JLabel Image;
     private javax.swing.JTabbedPane JTable;
     private javax.swing.JButton Logout;
     private javax.swing.JLabel Name;
+    private javax.swing.JPasswordField NewPass;
     private javax.swing.JLabel NickName;
+    private javax.swing.JPasswordField OldPass;
     private javax.swing.JComboBox<String> Package;
+    private javax.swing.JLabel PassSug;
     private javax.swing.JLabel Phone;
+    private javax.swing.JPasswordField RePass;
+    private javax.swing.JFrame SetNewPassword;
     private javax.swing.JTextField TArea;
     private javax.swing.JTextField TPackages;
     private javax.swing.JTextField TUser;
@@ -774,11 +954,13 @@ public class Admin_Panel extends javax.swing.JFrame {
     private javax.swing.JDialog error;
     private javax.swing.JLabel inactive;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
@@ -788,11 +970,13 @@ public class Admin_Panel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel mail;
@@ -803,7 +987,7 @@ public class Admin_Panel extends javax.swing.JFrame {
 
     private void populateUserTable() {
 
-        int t=0, a=0;
+        int t = 0, a = 0;
         Database db = new Database();
         List<User> userList = (List<User>) db.getAllUsers();
         DefaultTableModel userModel = new DefaultTableModel();
@@ -823,15 +1007,16 @@ public class Admin_Panel extends javax.swing.JFrame {
                 user.Package
             });
             t++;
-                if(user.Package != null)
-                    a++;
+            if (user.Package != null) {
+                a++;
+            }
         }
-        total.setText("Total User : "+t);
-        active.setText("Active User : "+a);
-        inactive.setText("Inactive User : "+(t-a));
-        TUser.setText("  "+t);
-        AUser.setText("   "+a);
-        IUser.setText("   "+(t-a));
+        total.setText("Total User : " + t);
+        active.setText("Active User : " + a);
+        inactive.setText("Inactive User : " + (t - a));
+        TUser.setText("  " + t);
+        AUser.setText("   " + a);
+        IUser.setText("   " + (t - a));
         UserTable.setModel(userModel);
     }
 }

@@ -3,7 +3,6 @@ package isp_management;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 public class ISP_Management {
 
     public static void main(String[] args) {
@@ -57,6 +56,10 @@ class Admin {
 
     Admin() {
     }
+
+    void setPassword(String newpass) {
+        this.Password = newpass;
+    }
 }
 
 class User {
@@ -82,6 +85,7 @@ class User {
         this.Address = Address;
         this.Package = Package;
     }
+
     public User(String FullName, String NickName, String PhonNumber, String Email, String Password, String Address) {
         this.FullName = FullName;
         this.NickName = NickName;
@@ -90,8 +94,41 @@ class User {
         this.Password = Password;
         this.Address = Address;
     }
-    
-    private User(String P){
+
+    private User(String P) {
         this.Package = P;
     }
 }
+
+    class Pkg {
+
+        int id;
+        String pkg;
+        int mbps;
+
+        Pkg() {
+
+        }
+
+        Pkg(int id, String pkg, int mbps) {
+            this.id = id;
+            this.pkg = pkg;
+            this.mbps = mbps;
+        }
+    }
+    
+    class Area{
+        int id;
+        char code;
+        String area;
+        
+        Area(){
+            
+        }
+        
+        Area(int id, char code, String area){
+            this.id=id;
+            this.code=code;
+            this.area=area;
+        }
+    }

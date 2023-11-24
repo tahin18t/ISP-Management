@@ -107,6 +107,28 @@ public class Database {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    public Admin changePass(Admin admin, String newpass) {
+        String sql = "UPDATE admin SET Password = ? WHERE Email = ?";
+
+        try ( PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, newpass);
+            statement.setString(2, admin.Email);
+
+            int rowsAffected = statement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                // Password updated successfully
+                admin.setPassword(newpass); // Update the admin's password in the object
+                return admin; // Return the updated admin object
+            } else {
+                // Password update failed
+                return null; // Indicate the failure
+            }
+        } catch (SQLException e) {
+            return null;
+        }
+    }
+
     public User getUser(int index, String value) {
         String sql = "";
 
@@ -121,18 +143,18 @@ public class Database {
         };
         try ( PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, value);
-            
+
             ResultSet resultSet = statement.executeQuery();
-            
-            if(resultSet.next()){
+
+            if (resultSet.next()) {
                 return new User(
-                    resultSet.getString("Full_Name"),
-                    resultSet.getString("Nickname"),
-                    resultSet.getString("Phone"),
-                    resultSet.getString("Email"),
-                    null,
-                    resultSet.getString("Address"),
-                    resultSet.getString("Packages")
+                        resultSet.getString("Full_Name"),
+                        resultSet.getString("Nickname"),
+                        resultSet.getString("Phone"),
+                        resultSet.getString("Email"),
+                        null,
+                        resultSet.getString("Address"),
+                        resultSet.getString("Packages")
                 );
             }
         } catch (SQLException ex) {
@@ -167,6 +189,28 @@ public class Database {
         }
 
         return userList;
+    }
+
+    public List<Pkg> getAllPackages() {
+        List<Pkg> packageList = new ArrayList<>();
+
+        String sql = "SELECT * FROM package";
+
+        try ( PreparedStatement statement = connection.prepareStatement(sql)) {
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                Pkg pkg = new Pkg();
+                pkg.id = resultSet.getInt("ID");
+                pkg.pkg = resultSet.getString("Package");
+                pkg.id = resultSet.getInt("mbps");
+                packageList.add(pkg);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving package data", e);
+        }
+
+        return packageList;
     }
 
     public void closeConnection() {
