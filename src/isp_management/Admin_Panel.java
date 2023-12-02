@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class Admin_Panel extends javax.swing.JFrame {
 
+    Database db = new Database();
     private Admin admin;
     User user;
 
@@ -65,6 +66,22 @@ public class Admin_Panel extends javax.swing.JFrame {
         RePass = new javax.swing.JPasswordField();
         PassSug = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        AddArea = new javax.swing.JFrame();
+        address = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        point = new javax.swing.JTextField();
+        add = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        AddPackage = new javax.swing.JFrame();
+        pkgName = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
+        mbps = new javax.swing.JFormattedTextField();
+        jLabel19 = new javax.swing.JLabel();
+        price = new javax.swing.JFormattedTextField();
+        jButton2 = new javax.swing.JButton();
         Banner = new javax.swing.JPanel();
         Close = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -76,10 +93,14 @@ public class Admin_Panel extends javax.swing.JFrame {
         TArea = new javax.swing.JTextField();
         TPackages = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        AreaTable1 = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         AreaTable = new javax.swing.JTable();
-        jLabel6 = new javax.swing.JLabel();
+        Area = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jLabel2 = new javax.swing.JLabel();
@@ -337,6 +358,167 @@ public class Admin_Panel extends javax.swing.JFrame {
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        AddArea.setAlwaysOnTop(true);
+        AddArea.setBackground(new java.awt.Color(161, 208, 255));
+        AddArea.setLocationByPlatform(true);
+        AddArea.setUndecorated(true);
+        AddArea.setResizable(false);
+        AddArea.setSize(new java.awt.Dimension(446, 270));
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel14.setText("Point");
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel16.setText("Address");
+
+        point.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pointActionPerformed(evt);
+            }
+        });
+
+        add.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        add.setText("Add");
+        add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addActionPerformed(evt);
+            }
+        });
+
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/close(40x40).png"))); // NOI18N
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout AddAreaLayout = new javax.swing.GroupLayout(AddArea.getContentPane());
+        AddArea.getContentPane().setLayout(AddAreaLayout);
+        AddAreaLayout.setHorizontalGroup(
+            AddAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AddAreaLayout.createSequentialGroup()
+                .addContainerGap(46, Short.MAX_VALUE)
+                .addGroup(AddAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(AddAreaLayout.createSequentialGroup()
+                        .addGroup(AddAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(AddAreaLayout.createSequentialGroup()
+                                .addGroup(AddAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(point, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(64, 64, 64))
+                    .addGroup(AddAreaLayout.createSequentialGroup()
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton7))))
+        );
+        AddAreaLayout.setVerticalGroup(
+            AddAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AddAreaLayout.createSequentialGroup()
+                .addGroup(AddAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(AddAreaLayout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton7))
+                .addGap(24, 24, 24)
+                .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(AddAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(AddAreaLayout.createSequentialGroup()
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(point, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(48, Short.MAX_VALUE))
+        );
+
+        AddPackage.setAlwaysOnTop(true);
+        AddPackage.setBounds(new java.awt.Rectangle(1000, 1000, 450, 330));
+        AddPackage.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        AddPackage.setLocation(new java.awt.Point(1000, 1000));
+        AddPackage.setMinimumSize(new java.awt.Dimension(450, 330));
+        AddPackage.setUndecorated(true);
+        AddPackage.setResizable(false);
+        AddPackage.setSize(new java.awt.Dimension(450, 330));
+
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel17.setText("Mb/S");
+
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel18.setText("Package Name");
+
+        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jButton5.setText("Add");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        mbps.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("0.00"))));
+
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel19.setText("Price");
+
+        price.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
+
+        jButton2.setBackground(javax.swing.UIManager.getDefaults().getColor("window"));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/close(40x40).png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout AddPackageLayout = new javax.swing.GroupLayout(AddPackage.getContentPane());
+        AddPackage.getContentPane().setLayout(AddPackageLayout);
+        AddPackageLayout.setHorizontalGroup(
+            AddPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AddPackageLayout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addGroup(AddPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, AddPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pkgName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, AddPackageLayout.createSequentialGroup()
+                        .addGroup(AddPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(mbps, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(AddPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(price)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, AddPackageLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(jButton2))
+        );
+        AddPackageLayout.setVerticalGroup(
+            AddPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AddPackageLayout.createSequentialGroup()
+                .addGroup(AddPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(AddPackageLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pkgName, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(AddPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(AddPackageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mbps, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(137, 157, 255));
         setUndecorated(true);
@@ -386,7 +568,7 @@ public class Admin_Panel extends javax.swing.JFrame {
 
         TUser.setEditable(false);
         TUser.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        TUser.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "Total Area", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe Print", 0, 18))); // NOI18N
+        TUser.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "Total User", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe Print", 0, 18))); // NOI18N
         TUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TUserActionPerformed(evt);
@@ -464,15 +646,70 @@ public class Admin_Panel extends javax.swing.JFrame {
 
         JTable.addTab("Home", jDesktopPane2);
 
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel20.setText("Total Package :");
+
+        jButton6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton6.setText("Add Package");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        AreaTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null}
+            },
+            new String [] {
+                "No", "Package Name", "Mb/s", "Price"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        AreaTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
+        jScrollPane3.setViewportView(AreaTable1);
+        AreaTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1065, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(164, 164, 164)
+                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(79, 79, 79)
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 886, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 561, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(66, 66, 66)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56))
         );
 
         JTable.addTab("  Packages  ", jPanel1);
@@ -489,7 +726,7 @@ public class Admin_Panel extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false
@@ -508,11 +745,16 @@ public class Admin_Panel extends javax.swing.JFrame {
         jScrollPane2.setViewportView(AreaTable);
         AreaTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel6.setText("TotalArea :");
+        Area.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        Area.setText("TotalArea :");
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton3.setText("Add Area");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -522,7 +764,7 @@ public class Admin_Panel extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(164, 164, 164)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Area, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(79, 79, 79)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
@@ -535,7 +777,7 @@ public class Admin_Panel extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addGap(98, 98, 98)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Area, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(66, 66, 66)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -808,7 +1050,7 @@ public class Admin_Panel extends javax.swing.JFrame {
     }//GEN-LAST:event_JTableStateChanged
 
     private void GetUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GetUserActionPerformed
-        Database db = new Database();
+        //Database db = new Database();
         user = db.getUser(type.getSelectedIndex(), Value.getText());
         if (user != null) {
             UserProfile.setVisible(true);
@@ -818,7 +1060,7 @@ public class Admin_Panel extends javax.swing.JFrame {
             mail.setText(user.Email);
             Address.setText(user.Address);
         } else {
-            JOptionPane.showMessageDialog(null, "here is no user as \""+Value.getText()+"\"", "Wrong Information", 3);
+            JOptionPane.showMessageDialog(null, "here is no user as \"" + Value.getText() + "\"", "Wrong Information", 3);
         }
     }//GEN-LAST:event_GetUserActionPerformed
 
@@ -903,7 +1145,7 @@ public class Admin_Panel extends javax.swing.JFrame {
                         return;
                     }
                 }
-                Database db = new Database();
+                //Database db = new Database();
                 Admin newadmin = db.changePass(admin, NewPass.getText());
                 if (newadmin != null) {
                     admin = newadmin;
@@ -920,11 +1162,70 @@ public class Admin_Panel extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void pointActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pointActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pointActionPerformed
+
+    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
+        try {
+            if (point.getText() == null || address.getText() == null) {
+                throw new NullPointerException("Null values detected");
+            }
+            db.AddArea(point.getText(), address.getText());
+            AddArea.dispose();
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Please fill all fields correctly", "Wrong Information", 3);
+        } catch (Exception e) {
+            // Handle SQLException here
+            JOptionPane.showMessageDialog(null, "Error adding area: " + e.getMessage(), "Database Error", 1);
+        }
+    }//GEN-LAST:event_addActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        AddArea.setVisible(true);
+        point.setText(null);
+        address.setText(null);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        try {
+            if (pkgName.getText() == null || mbps.getText() == null || price.getText() == null) {
+                throw new NullPointerException("Null values detected");
+            }
+            db.AddPackage(pkgName.getText(), mbps.getText(), price.getText());
+            AddPackage.dispose();
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Please fill all fields correctly", "Wrong Information", 3);
+        } catch (Exception e) {
+            // Handle SQLException here
+            JOptionPane.showMessageDialog(null, "Error adding area: " + e.getMessage(), "Database Error", 1);
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        AddPackage.setVisible(true);
+        pkgName.setText(null);
+        mbps.setText(null);
+        price.setText(null);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        AddPackage.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        AddArea.dispose();
+    }//GEN-LAST:event_jButton7ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AUser;
+    private javax.swing.JFrame AddArea;
+    private javax.swing.JFrame AddPackage;
     private javax.swing.JLabel Address;
+    private javax.swing.JLabel Area;
     private javax.swing.JTable AreaTable;
+    private javax.swing.JTable AreaTable1;
     private javax.swing.JPanel Banner;
     private javax.swing.JButton Close;
     private javax.swing.JLabel Email;
@@ -950,12 +1251,18 @@ public class Admin_Panel extends javax.swing.JFrame {
     private javax.swing.JTable UserTable;
     private javax.swing.JTextField Value;
     private javax.swing.JLabel active;
+    private javax.swing.JButton add;
+    private javax.swing.JTextField address;
     private java.awt.Button button1;
     private javax.swing.JDialog error;
     private javax.swing.JLabel inactive;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JLabel jLabel1;
@@ -963,12 +1270,17 @@ public class Admin_Panel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -979,8 +1291,13 @@ public class Admin_Panel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel mail;
+    private javax.swing.JFormattedTextField mbps;
     private javax.swing.JLabel phn;
+    private javax.swing.JTextField pkgName;
+    private javax.swing.JTextField point;
+    private javax.swing.JFormattedTextField price;
     private javax.swing.JLabel total;
     private javax.swing.JComboBox<String> type;
     // End of variables declaration//GEN-END:variables
@@ -988,7 +1305,7 @@ public class Admin_Panel extends javax.swing.JFrame {
     private void populateUserTable() {
 
         int t = 0, a = 0;
-        Database db = new Database();
+//        Database db = new Database();
         List<User> userList = (List<User>) db.getAllUsers();
         DefaultTableModel userModel = new DefaultTableModel();
         userModel.addColumn("UserName");
@@ -1018,5 +1335,61 @@ public class Admin_Panel extends javax.swing.JFrame {
         AUser.setText("   " + a);
         IUser.setText("   " + (t - a));
         UserTable.setModel(userModel);
+    }
+
+    private void AreaTable() {
+
+        int t = 0, a = 0;
+//        Database db = new Database();
+        List<User> userList = (List<User>) db.getAllUsers();
+        DefaultTableModel userModel = new DefaultTableModel();
+        userModel.addColumn("UserName");
+        userModel.addColumn("Phone");
+        userModel.addColumn("Email");
+        userModel.addColumn("Address");
+        userModel.addColumn("Package");
+
+        // Assuming you have a list of User objects, usersList, retrieved from the database
+        for (User user : userList) {
+            userModel.addRow(new Object[]{
+                user.NickName,
+                user.PhonNumber,
+                user.Email,
+                user.Address,
+                user.Package
+            });
+            t++;
+            if (user.Package != null) {
+                a++;
+            }
+        }
+        total.setText("Total User : " + t);
+        active.setText("Active User : " + a);
+        inactive.setText("Inactive User : " + (t - a));
+        TUser.setText("  " + t);
+        AUser.setText("   " + a);
+        IUser.setText("   " + (t - a));
+        UserTable.setModel(userModel);
+    }
+
+    private void updateAreaTable() {
+        int totalArea = 0;
+        try {
+            DefaultTableModel model = (DefaultTableModel) AreaTable.getModel();
+            model.setRowCount(0);
+
+            List<Area> areas = db.getAllAreas();
+
+            for (Area area : areas) {
+                Object[] row = {area.id, area.code, area.area};
+                model.addRow(row);
+            }
+            totalArea = model.getRowCount();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error updating area table: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        TArea.setText("   "+totalArea);
+        Area.setText("Total Area: "+totalArea);
     }
 }

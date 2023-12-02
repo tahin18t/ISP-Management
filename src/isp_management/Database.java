@@ -9,6 +9,10 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class Database {
 
@@ -39,6 +43,31 @@ public class Database {
             e.printStackTrace();
             //throw new RuntimeException("User registration failed", e);
             return false;
+        }
+    }
+
+    public void AddArea(String point, String address) {
+        String sql = "INSERT INTO `isp_management`.`area` (`Area_Point`, `Address`) VALUES (?, ?)";
+
+        try ( PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, point);
+            statement.setString(2, address);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error adding area", e);
+        }
+    }
+
+    public void AddPackage(String name, String mbps, String price) {
+        String sql = "INSERT INTO `isp_management`.`package` (`Package_Name`, `Mbps`, `Price`) VALUES (?, ?, ?)";
+
+        try ( PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, name);
+            statement.setString(2, mbps);
+            statement.setString(3, price);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error adding package", e);
         }
     }
 
@@ -240,5 +269,28 @@ public class Database {
         } catch (SQLException e) {
             throw new RuntimeException("Error updating user package", e);
         }
+    }
+
+    public List<Area> getAllAreas() {
+        List<Area> areaList = new ArrayList<>();
+
+        String sql = "SELECT * FROM area";
+
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                Area area = new Area(
+                        resultSet.getInt("No"),
+                        resultSet.getString("Area_Point"),
+                        resultSet.getString("Address")
+                );
+                areaList.add(area);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving area data", e);
+        }
+
+        return areaList;
     }
 }

@@ -9,6 +9,7 @@ public class ISP_Management {
         //Admin admin = new Admin("Name", "Phone", "Email", "Password");
         //new Admin_Panel(admin).setVisible(true);
         //return;
+        new Admin_Panel(new Admin()).setVisible(true);
         System.out.println("hello world");
         Loading ld = new Loading();
         ld.setVisible(true);
@@ -119,14 +120,14 @@ class User {
     
     class Area{
         int id;
-        char code;
+        String code;
         String area;
         
         Area(){
             
         }
         
-        Area(int id, char code, String area){
+        Area(int id, String code, String area){
             this.id=id;
             this.code=code;
             this.area=area;
