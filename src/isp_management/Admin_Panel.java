@@ -28,6 +28,8 @@ public class Admin_Panel extends javax.swing.JFrame {
         //Regestration.setHint(Username, "UserName");
         initComponents();
         populateUserTable();
+        updateAreaTable();
+        updatepkgTable();
         //Regestration.setHint(Username, "UserName");
     }
 
@@ -91,12 +93,12 @@ public class Admin_Panel extends javax.swing.JFrame {
         IUser = new javax.swing.JTextField();
         AUser = new javax.swing.JTextField();
         TArea = new javax.swing.JTextField();
-        TPackages = new javax.swing.JTextField();
+        TPackage = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
-        jLabel20 = new javax.swing.JLabel();
+        Tpackage = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        AreaTable1 = new javax.swing.JTable();
+        PkgTable = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         AreaTable = new javax.swing.JTable();
@@ -592,12 +594,12 @@ public class Admin_Panel extends javax.swing.JFrame {
         TArea.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         TArea.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "Total Area", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe Print", 0, 18))); // NOI18N
 
-        TPackages.setEditable(false);
-        TPackages.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        TPackages.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "Total Packages", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe Print", 0, 18))); // NOI18N
-        TPackages.addActionListener(new java.awt.event.ActionListener() {
+        TPackage.setEditable(false);
+        TPackage.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        TPackage.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "Total Packages", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe Print", 0, 18))); // NOI18N
+        TPackage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TPackagesActionPerformed(evt);
+                TPackageActionPerformed(evt);
             }
         });
 
@@ -605,7 +607,7 @@ public class Admin_Panel extends javax.swing.JFrame {
         jDesktopPane2.setLayer(IUser, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(AUser, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(TArea, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(TPackages, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(TPackage, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
         jDesktopPane2.setLayout(jDesktopPane2Layout);
@@ -624,7 +626,7 @@ public class Admin_Panel extends javax.swing.JFrame {
                         .addGap(231, 231, 231)
                         .addComponent(TArea, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(66, 66, 66)
-                        .addComponent(TPackages, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(TPackage, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(135, Short.MAX_VALUE))
         );
         jDesktopPane2Layout.setVerticalGroup(
@@ -638,7 +640,7 @@ public class Admin_Panel extends javax.swing.JFrame {
                 .addGap(89, 89, 89)
                 .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TArea, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TPackages, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TPackage, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(172, Short.MAX_VALUE))
         );
 
@@ -646,8 +648,8 @@ public class Admin_Panel extends javax.swing.JFrame {
 
         JTable.addTab("Home", jDesktopPane2);
 
-        jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel20.setText("Total Package :");
+        Tpackage.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        Tpackage.setText("Total Package :");
 
         jButton6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton6.setText("Add Package");
@@ -657,19 +659,20 @@ public class Admin_Panel extends javax.swing.JFrame {
             }
         });
 
-        AreaTable1.setModel(new javax.swing.table.DefaultTableModel(
+        PkgTable.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        PkgTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null}
+                {null, null, null}
             },
             new String [] {
-                "No", "Package Name", "Mb/s", "Price"
+                "Package Name", "Mb/s", "Price"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -680,9 +683,10 @@ public class Admin_Panel extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        AreaTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
-        jScrollPane3.setViewportView(AreaTable1);
-        AreaTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        PkgTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
+        PkgTable.setRowHeight(50);
+        jScrollPane3.setViewportView(PkgTable);
+        PkgTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -692,7 +696,7 @@ public class Admin_Panel extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(164, 164, 164)
-                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Tpackage, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(79, 79, 79)
                         .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -705,7 +709,7 @@ public class Admin_Panel extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(98, 98, 98)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Tpackage, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(66, 66, 66)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -714,6 +718,8 @@ public class Admin_Panel extends javax.swing.JFrame {
 
         JTable.addTab("  Packages  ", jPanel1);
 
+        AreaTable.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        AreaTable.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         AreaTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -740,8 +746,22 @@ public class Admin_Panel extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        AreaTable.setAlignmentX(2.0F);
+        AreaTable.setAlignmentY(2.0F);
         AreaTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
         AreaTable.setColumnSelectionAllowed(true);
+        AreaTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        AreaTable.setRowHeight(50);
+        AreaTable.setShowGrid(true);
+        AreaTable.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                AreaTableAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         jScrollPane2.setViewportView(AreaTable);
         AreaTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
@@ -1110,9 +1130,9 @@ public class Admin_Panel extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_LogoutActionPerformed
 
-    private void TPackagesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TPackagesActionPerformed
+    private void TPackageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TPackageActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TPackagesActionPerformed
+    }//GEN-LAST:event_TPackageActionPerformed
 
     private void TUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TUserActionPerformed
         // TODO add your handling code here:
@@ -1173,6 +1193,7 @@ public class Admin_Panel extends javax.swing.JFrame {
             }
             db.AddArea(point.getText(), address.getText());
             AddArea.dispose();
+            updateAreaTable();
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "Please fill all fields correctly", "Wrong Information", 3);
         } catch (Exception e) {
@@ -1194,6 +1215,7 @@ public class Admin_Panel extends javax.swing.JFrame {
             }
             db.AddPackage(pkgName.getText(), mbps.getText(), price.getText());
             AddPackage.dispose();
+            updatepkgTable();
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "Please fill all fields correctly", "Wrong Information", 3);
         } catch (Exception e) {
@@ -1217,6 +1239,10 @@ public class Admin_Panel extends javax.swing.JFrame {
         AddArea.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void AreaTableAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_AreaTableAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AreaTableAncestorAdded
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AUser;
@@ -1225,7 +1251,6 @@ public class Admin_Panel extends javax.swing.JFrame {
     private javax.swing.JLabel Address;
     private javax.swing.JLabel Area;
     private javax.swing.JTable AreaTable;
-    private javax.swing.JTable AreaTable1;
     private javax.swing.JPanel Banner;
     private javax.swing.JButton Close;
     private javax.swing.JLabel Email;
@@ -1242,11 +1267,13 @@ public class Admin_Panel extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> Package;
     private javax.swing.JLabel PassSug;
     private javax.swing.JLabel Phone;
+    private javax.swing.JTable PkgTable;
     private javax.swing.JPasswordField RePass;
     private javax.swing.JFrame SetNewPassword;
     private javax.swing.JTextField TArea;
-    private javax.swing.JTextField TPackages;
+    private javax.swing.JTextField TPackage;
     private javax.swing.JTextField TUser;
+    private javax.swing.JLabel Tpackage;
     private javax.swing.JFrame UserProfile;
     private javax.swing.JTable UserTable;
     private javax.swing.JTextField Value;
@@ -1277,7 +1304,6 @@ public class Admin_Panel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1337,41 +1363,6 @@ public class Admin_Panel extends javax.swing.JFrame {
         UserTable.setModel(userModel);
     }
 
-    private void AreaTable() {
-
-        int t = 0, a = 0;
-//        Database db = new Database();
-        List<User> userList = (List<User>) db.getAllUsers();
-        DefaultTableModel userModel = new DefaultTableModel();
-        userModel.addColumn("UserName");
-        userModel.addColumn("Phone");
-        userModel.addColumn("Email");
-        userModel.addColumn("Address");
-        userModel.addColumn("Package");
-
-        // Assuming you have a list of User objects, usersList, retrieved from the database
-        for (User user : userList) {
-            userModel.addRow(new Object[]{
-                user.NickName,
-                user.PhonNumber,
-                user.Email,
-                user.Address,
-                user.Package
-            });
-            t++;
-            if (user.Package != null) {
-                a++;
-            }
-        }
-        total.setText("Total User : " + t);
-        active.setText("Active User : " + a);
-        inactive.setText("Inactive User : " + (t - a));
-        TUser.setText("  " + t);
-        AUser.setText("   " + a);
-        IUser.setText("   " + (t - a));
-        UserTable.setModel(userModel);
-    }
-
     private void updateAreaTable() {
         int totalArea = 0;
         try {
@@ -1386,10 +1377,33 @@ public class Admin_Panel extends javax.swing.JFrame {
             }
             totalArea = model.getRowCount();
         } catch (Exception e) {
+            e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error updating area table: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
         }
 
         TArea.setText("   "+totalArea);
         Area.setText("Total Area: "+totalArea);
+    }
+    
+    private void updatepkgTable() {
+        int totalPkg = 0;
+        try {
+            DefaultTableModel model = (DefaultTableModel) PkgTable.getModel();
+            model.setRowCount(0);
+
+            List<Pkg> packages = db.getAllPackages();
+
+            for (Pkg pkg : packages) {
+                Object[] row = {pkg.pkg, pkg.mbps, pkg.Price};
+                model.addRow(row);
+            }
+            totalPkg = model.getRowCount();
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error updating area table: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        TPackage.setText("   "+totalPkg);
+        Tpackage.setText("Total Area: "+totalPkg);
     }
 }

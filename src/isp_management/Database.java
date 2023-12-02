@@ -229,10 +229,11 @@ public class Database {
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                Pkg pkg = new Pkg();
-                pkg.id = resultSet.getInt("ID");
-                pkg.pkg = resultSet.getString("Package");
-                pkg.id = resultSet.getInt("mbps");
+                Pkg pkg = new Pkg(
+                resultSet.getString("Package"),
+                resultSet.getString("mbps"),
+                resultSet.getString("Price")
+                );
                 packageList.add(pkg);
             }
         } catch (SQLException e) {
@@ -276,12 +277,12 @@ public class Database {
 
         String sql = "SELECT * FROM area";
 
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+        try ( PreparedStatement statement = connection.prepareStatement(sql)) {
             ResultSet resultSet = statement.executeQuery();
-
+            int i= 1;
             while (resultSet.next()) {
                 Area area = new Area(
-                        resultSet.getInt("No"),
+                        i++,
                         resultSet.getString("Area_Point"),
                         resultSet.getString("Address")
                 );

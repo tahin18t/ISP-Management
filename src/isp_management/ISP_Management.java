@@ -102,19 +102,19 @@ class User {
 }
 
     class Pkg {
-
-        int id;
+        
         String pkg;
-        int mbps;
+        String mbps;
+        String Price;
 
         Pkg() {
 
         }
 
-        Pkg(int id, String pkg, int mbps) {
-            this.id = id;
+        Pkg(String pkg, String mbps,String Price) {
             this.pkg = pkg;
             this.mbps = mbps;
+            this.Price = Price;
         }
     }
     
