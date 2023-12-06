@@ -6,10 +6,7 @@ import java.util.logging.Logger;
 public class ISP_Management {
 
     public static void main(String[] args) {
-        //Admin admin = new Admin("Name", "Phone", "Email", "Password");
-        //new Admin_Panel(admin).setVisible(true);
-        //return;
-        new Admin_Panel(new Admin()).setVisible(true);
+        
         System.out.println("hello world");
         Loading ld = new Loading();
         ld.setVisible(true);
@@ -28,16 +25,6 @@ public class ISP_Management {
         }
         ld.dispose();
         new Link3().setVisible(true);
-        /*Connection connection;
-        try{
-        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/isp_management", "root", "Tahin123");
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM isp_management.admin;");
-        }
-        catch{
-        
-        }
-        user User = new user();*/
     }
 }
 
@@ -114,7 +101,7 @@ class User {
         Pkg(String pkg, String mbps,String Price) {
             this.pkg = pkg;
             this.mbps = mbps;
-            this.Price = Price;
+            this.Price = Price+"Tk";
         }
     }
     

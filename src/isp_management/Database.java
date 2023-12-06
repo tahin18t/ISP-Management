@@ -7,12 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 public class Database {
 
@@ -209,7 +203,8 @@ public class Database {
                         resultSet.getString("Phone"),
                         resultSet.getString("Email"),
                         resultSet.getString("Password"),
-                        resultSet.getString("Address")
+                        resultSet.getString("Address"),
+                        resultSet.getString("Packages")
                 );
                 userList.add(user);
             }

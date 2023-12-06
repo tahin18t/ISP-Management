@@ -1,19 +1,10 @@
 package isp_management;
 
-import isp_management.Regestration;
-import isp_management.Database;
 import java.awt.Color;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
-import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class Admin_Panel extends javax.swing.JFrame {
@@ -162,7 +153,12 @@ public class Admin_Panel extends javax.swing.JFrame {
 
         Address.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        Package.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Package.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/A", "Pro", "Primary", "Basic" }));
+        Package.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PackageActionPerformed(evt);
+            }
+        });
 
         button1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         button1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -1242,6 +1238,10 @@ public class Admin_Panel extends javax.swing.JFrame {
     private void AreaTableAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_AreaTableAncestorAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_AreaTableAncestorAdded
+
+    private void PackageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PackageActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PackageActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
